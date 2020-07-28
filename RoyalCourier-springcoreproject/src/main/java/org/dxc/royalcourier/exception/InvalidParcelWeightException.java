@@ -2,9 +2,12 @@ package org.dxc.royalcourier.exception;
 
 public class InvalidParcelWeightException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public InvalidParcelWeightException() {
 		super();
-		System.out.println();
 		// TODO Auto-generated constructor stub
 	}
 	public String toString() {

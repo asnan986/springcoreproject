@@ -7,45 +7,31 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class CourierService {
-	
+
 	private CourierBO cBoObj;
-	
-	public double calculateCourierCharge(int courierId, int weight,String city) {
-		double couriercharge=0;
+
+	public double calculateCourierCharge(int courierId, int weight, String city) {
+		double couriercharge = 0;
 		try {
-			if(weight>0 && weight<1000)
-			{
+			if (weight > 0 && weight < 1000) {
 				ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-				Courier courier = (Courier)context.getBean("courier");
+				Courier courier = (Courier) context.getBean("courier");
 				courier.setCourierId(courierId);
 				courier.setWeight(weight);
-				couriercharge=cBoObj.calculateCourierCharge(courier, city);
-				
-				
-			}
-			else
+				couriercharge = cBoObj.calculateCourierCharge(courier, city);
+
+			} else
 				throw new InvalidParcelWeightException();
-			
-		}
-		catch(InvalidParcelWeightException e) {
-			
+
+		} catch (InvalidParcelWeightException e) {
+
 			System.out.println(e);
 		}
 		return couriercharge;
-		
-		
-		
-	}
 
-	public CourierBO getCBoObj() {
-		return cBoObj;
 	}
-
 	public void setCBoObj(CourierBO cBoObj) {
 		this.cBoObj = cBoObj;
 	}
-
-	
-	
 
 }
